@@ -1,0 +1,12 @@
+.project
+.classpath
+.DS_Store
+/.settings/
+/build/
+/webapps/META-INF/
+/webapps/WEB-INF/
+/webapps/puf/scripts/
+/webapps/puf/styles/skins/
+/webapps/puf/styles/themes/
+/webapps/puf/styles/common.css
+/webapps/puf/styles/common.min.css

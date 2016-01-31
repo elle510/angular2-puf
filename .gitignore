@@ -3,6 +3,7 @@
 .DS_Store
 /.settings/
 /build/
+/node_modules/
 /webapps/META-INF/
 /webapps/WEB-INF/
 /webapps/puf/scripts/

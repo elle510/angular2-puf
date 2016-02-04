@@ -1,5 +1,5 @@
 import {Component} from 'angular2/core';
-console.log(Component);
+//console.log(Component);
 
 @Component({
     selector: 'my-app',

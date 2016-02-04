@@ -16,7 +16,7 @@ System.register(['angular2/core'], function(exports_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            console.log(core_1.Component);
+            //console.log(Component);
             AppComponent = (function () {
                 function AppComponent() {
                     this.name = 'Ahn Hyung-Ro';
@@ -35,4 +35,5 @@ System.register(['angular2/core'], function(exports_1) {
         }
     }
 });
-//# sourceMappingURL=app.component.js.map
+
+//# sourceMappingURL=app2.component.js.map

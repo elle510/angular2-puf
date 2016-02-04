@@ -8,9 +8,11 @@
     	"experimentalDecorators": true,
     	"removeComments": false,
     	"noImplicitAny": false,
-    	"out": "puf-build/bundles/test.js",
-    	"outDir": "puf-build"
+    	"outDir": "puf-build/scripts"
   	},
+  	"filesGlob": [
+    	"puf-src/**/*.ts"
+  	],
  	"exclude": [
     	"node_modules",
     	"puf-build",

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "gulp"
+    "start": "gulp bundle-js"
   },
   "repository": {
     "type": "git",
@@ -27,13 +27,19 @@
     "zone.js": "0.5.10"
   },
   "devDependencies": {
+    "del": "^2.2.0",
     "gulp": "^3.9.0",
     "gulp-concat": "^2.6.0",
+    "gulp-less": "^3.0.5",
     "gulp-minify-html": "^1.0.5",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^1.6.0",
     "gulp-strip-comments": "^2.2.1",
     "gulp-strip-debug": "^1.1.0",
+    "gulp-typescript": "^2.10.0",
     "gulp-uglify": "^1.5.1",
     "gulp-uglifycss": "^1.0.5",
+    "run-sequence": "^1.1.5",
     "systemjs-builder": "^0.15.5",
     "typescript": "^1.7.5"
   }

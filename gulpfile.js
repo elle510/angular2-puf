@@ -65,16 +65,16 @@ var PUF_BUNDLE_CONTENT = PUF_BUNDLE_CONFIG.join(' + ') + ' - rxjs/*';
 
 gulp.task('clean.js', ['clean.js:build', 'clean.js:dist']);
 
-gulp.task('clean.js:build', function () {
+gulp.task('clean.js:build', function() {
 	return del(BUILD_PATH);
 });
 
-gulp.task('clean.js:dist', function () {
+gulp.task('clean.js:dist', function() {
 	return del(DIST_PATH + '/**/*.js');
 });
 
 // TypeScript compile
-gulp.task('compile', ['clean.js:build'], function () {
+gulp.task('compile', ['clean.js:build'], function() {
 	return gulp.src(CONFIG.src_files)
 				.pipe(sourcemaps.init())
 				.pipe(typescript(tsconfig.compilerOptions))
@@ -82,7 +82,7 @@ gulp.task('compile', ['clean.js:build'], function () {
 				.pipe(gulp.dest(BUILD_PATH));
 });
 
-gulp.task('bundle', ['compile'], function () {
+gulp.task('bundle', ['compile'], function() {
 	
 	var builder = new Builder();
 	var buildConfig = {
@@ -127,7 +127,7 @@ gulp.task('bundle', ['compile'], function () {
 	
 });
 
-gulp.task('dist.js', ['bundle'], function () {
+gulp.task('dist.js', ['bundle'], function() {
 	return gulp.src(CONFIG.bundle_files)
 				//.pipe(stripComments())
 				//.pipe(concat('puf.js', {newLine: '\n'}))
@@ -136,7 +136,7 @@ gulp.task('dist.js', ['bundle'], function () {
 });
 
 // 자바스크립트 파일을 하나로 합치고 압축한다.
-gulp.task('dist.js:min', ['bundle'], function () {
+gulp.task('dist.js:min', ['bundle'], function() {
 	return gulp.src(CONFIG.bundle_files)
 				.pipe(stripDebug())
 				.pipe(uglify())
@@ -149,15 +149,15 @@ gulp.task('dist.js:min', ['bundle'], function () {
 
 gulp.task('clean.css', ['clean.css:build', 'clean.css:dist']);
 
-gulp.task('clean.css:build', function () {
+gulp.task('clean.css:build', function() {
 	return del(BUILD_CSS_PATH);
 });
 
-gulp.task('clean.css:dist', function () {
+gulp.task('clean.css:dist', function() {
 	return del(DIST_CSS_PATH);
 });
 
-gulp.task('less', ['clean.css:build'], function () {
+gulp.task('less', ['clean.css:build'], function() {
 	return gulp.src(CONFIG.less_files)
 				/*
 	    		.pipe(less({
@@ -168,12 +168,12 @@ gulp.task('less', ['clean.css:build'], function () {
 	    		.pipe(gulp.dest(BUILD_CSS_PATH));
 });
 
-gulp.task('dist.css', ['clean.css:dist', 'less'], function () {
+gulp.task('dist.css', ['clean.css:dist', 'less'], function() {
 	return gulp.src(CONFIG.css_files)	    		
 	    		.pipe(gulp.dest(DIST_CSS_PATH));
 });
 
-gulp.task('dist.css:min', ['clean.css:dist','less'], function () {
+gulp.task('dist.css:min', ['clean.css:dist','less'], function() {
 	var rename = require('gulp-rename');
 	
 	return gulp.src(CONFIG.css_files)
@@ -188,9 +188,50 @@ gulp.task('dist.css:min', ['clean.css:dist','less'], function () {
 });
 
 //-----------------------
+// Demo
+
+var DEMO_SRC_PATH = './webapps/puf-demo';
+var DEMO_BUILD_PATH = './webapps/puf-demo/scripts';
+
+gulp.task('clean.demo', function() {
+	return del(DEMO_BUILD_PATH);
+});
+
+// demo compile
+gulp.task('build.demo', ['clean.demo'], function() {
+	var demo_tsconfig = require('./webapps/puf-demo/tsconfig.json');
+	return gulp.src(DEMO_SRC_PATH + '/**/*.ts')
+				.pipe(sourcemaps.init())
+//				.pipe(typescript({module:'system', moduleResolution: 'node', experimentalDecorators: true}))
+				.pipe(typescript(demo_tsconfig.compilerOptions))
+				.pipe(sourcemaps.write('.'))
+				.pipe(gulp.dest(DEMO_BUILD_PATH));
+});
+
+//-----------------------
+// Tutorial
+
+var TUTORIAL_SRC_PATH = './webapps/tutorial';
+var TUTORIAL_BUILD_PATH = './webapps/tutorial';
+
+gulp.task('clean.tutorial', function() {
+	return del([TUTORIAL_BUILD_PATH + '/**/*.js', TUTORIAL_BUILD_PATH + '/**/*.js.map', '!./webapps/tutorial/lib/**/*']);
+});
+
+//demo compile
+gulp.task('build.tutorial', ['clean.tutorial'], function() {
+	var tutorial_tsconfig = require('./webapps/tutorial/tsconfig.json');
+	return gulp.src(TUTORIAL_SRC_PATH + '/**/*.ts')
+				.pipe(sourcemaps.init())
+				.pipe(typescript(tutorial_tsconfig.compilerOptions))
+				.pipe(sourcemaps.write('.'))
+				.pipe(gulp.dest(TUTORIAL_BUILD_PATH));
+});
+
+//-----------------------
 // task 설정
 
-gulp.task('clean', ['clean.js', 'clean.css']);
-gulp.task('build', ['compile', 'bundle', 'dist.js', 'dist.js:min']);
-gulp.task('css', ['less', 'dist.css', 'dist.css:min']);
-gulp.task('default', ['build', 'css']);
+gulp.task('clean', ['clean.js', 'clean.css']);								// puf js/css clean
+gulp.task('build', ['compile', 'bundle', 'dist.js', 'dist.js:min']);		// puf js
+gulp.task('css', ['less', 'dist.css', 'dist.css:min']);						// puf css
+gulp.task('default', ['build', 'css', 'build.demo', 'build.tutorial']);		// puf/puf-demo/tutorial

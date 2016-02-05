@@ -1,0 +1,406 @@
+/* {
+    * {
+        margin: 0;
+        padding: 0;
+    }
+}
+*/
+body {
+  background: #fff;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  color: #333;
+  font-size: 14px;
+}
+/* wrapper
+----------------------------------*/
+.wrapper {
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+/* header 영역
+----------------------------------*/
+.header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+  margin: 0;
+  padding-right: 0;
+  padding-left: 0;
+  width: 100%;
+  height: 80px;
+  background-color: #ffffff;
+  border: 1px solid;
+}
+.header .user {
+  width: 100%;
+  height: 30px;
+  display: block !important;
+}
+.header .user .btn-renew {
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+  height: 25px;
+  border: 1px solid;
+  border-radius: 4px;
+}
+.header .user .btn-renew:active,
+.header .user .btn-renew.active {
+  background-image: none;
+  outline: 0;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+.header .user .btn-logout {
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+  height: 25px;
+  border: 1px solid;
+  border-radius: 4px;
+}
+.header .navi {
+  width: 100%;
+  height: 50px;
+  border: 1px solid;
+}
+.header .navi .logo {
+  float: left;
+  width: 200px;
+  height: 100%;
+  border: 1px solid;
+}
+.header .navi .navbar {
+  height: 100%;
+  border: 1px solid;
+  margin: 0;
+}
+.header .navi .navbar .navbar-nav {
+  height: 100%;
+  float: left;
+  border: 1px solid;
+}
+.header .navi .navbar .navbar-right {
+  float: right !important;
+}
+.header .navi .navbar .navbar-right .dropdown-menu {
+  right: 0;
+  left: auto;
+}
+.header .navi .navbar .navbar-right .dropdown-menu-left {
+  right: auto;
+  left: 0;
+}
+.header .navi .navbar .navbar-nav.navbar-right:last-child {
+  margin-right: 0px;
+}
+.header .navi .navbar .navbar-form {
+  padding: 0px 15px;
+  margin-top: 0px;
+}
+.header .navi .navbar .navbar-form .input-group > .form-control {
+  width: 250px;
+}
+/* main 영역
+----------------------------------*/
+.main {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  top: 80px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.main .left-sidebar {
+  -webkit-transition-duration: 1s;
+  -moz-transition-duration: 1s;
+  -ms-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s;
+  width: 330px;
+  height: 100%;
+  position: fixed;
+  top: 80px;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  border: 1px solid;
+}
+.main .left-sidebar .left {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin-bottom: 110px;
+  overflow-y: auto;
+  width: 100%;
+}
+.main .center {
+  -webkit-transition-property: left;
+  -moz-transition-property: left;
+  -ms-transition-property: left;
+  -o-transition-property: left;
+  transition-property: left;
+  -webkit-transition-duration: 0.25s;
+  -moz-transition-duration: 0.25s;
+  -ms-transition-duration: 0.25s;
+  -o-transition-duration: 0.25s;
+  transition-duration: 0.25s;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 334px;
+  border: 1px solid;
+}
+.main .center > .breadcrumbs {
+  position: fixed;
+  top: 80px;
+  width: 100%;
+  height: 30px;
+  z-index: 1;
+  background-color: #ffffff;
+  border: 1px solid;
+}
+.main .center > .content {
+  position: relative;
+  top: 30px;
+  width: 100%;
+  padding-bottom: 30px;
+  border: 1px solid;
+}
+.main .leftsidebar-collapse {
+  -webkit-transition-property: left;
+  -moz-transition-property: left;
+  -ms-transition-property: left;
+  -o-transition-property: left;
+  transition-property: left;
+  -webkit-transition-duration: 0.25s;
+  -moz-transition-duration: 0.25s;
+  -ms-transition-duration: 0.25s;
+  -o-transition-duration: 0.25s;
+  transition-duration: 0.25s;
+  display: inline;
+  top: 100px;
+  left: 315px;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  width: 15px;
+  z-index: 88;
+  border: 1px solid;
+}
+.main .leftsidebar-collapse label {
+  font-size: 12px;
+  cursor: pointer;
+}
+.main .leftsidebar-collapse .collapse-close {
+  display: block;
+  padding: 0;
+  margin: 0;
+}
+.main .leftsidebar-collapse .collapse-open {
+  display: none;
+  padding: 0;
+  margin: 0;
+}
+.main .v-splitter {
+  background-color: #BBB;
+  background-position: center center;
+  background-repeat: no-repeat;
+  cursor: e-resize;
+  display: inline;
+  height: 100% !important;
+  top: 0;
+  left: 330px;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  vertical-align: middle;
+  width: 4px;
+  z-index: 88;
+}
+/* footer 영역
+----------------------------------*/
+.footer {
+  position: fixed;
+  bottom: 0;
+  text-align: right;
+  width: 100%;
+  height: 30px;
+  border: 1px solid;
+}
+/* Responsive 
+----------------------------------*/
+a.sidebar-link {
+  display: none;
+}
+a.nav-link {
+  display: none;
+}
+.logo-sm {
+  display: none;
+}
+.left-sidebar-toggle {
+  display: none;
+}
+/* Phones
+----------------------------------*/
+@media screen and (max-width: 767px) {
+  body {
+    font-size: 1.3750em;
+    /* 1em = 16px */
+  }
+  .wrapper {
+    /* position: relative; */
+    -webkit-transition: all 0.25s ease-out;
+    -moz-transition: all 0.25s ease-out;
+    -ms-transition: all 0.25s ease-out;
+    -o-transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out;
+  }
+  .header {
+    position: static;
+  }
+  .header .logo-sm {
+    display: block;
+    float: left;
+    border: 1px solid;
+  }
+  .header .user span {
+    display: none;
+  }
+  .navi .logo {
+    display: none;
+  }
+  .navi .navbar ul.nav.navbar-nav {
+    display: none;
+  }
+  .navi .navbar-nav.navbar-right {
+    display: none;
+  }
+  .left-sidebar-toggle {
+    display: block;
+  }
+  .main {
+    position: static;
+    /* display: block; */
+  }
+  .left-sidebar {
+    display: none;
+  }
+  .leftsidebar-collapse {
+    display: none;
+  }
+  .v-splitter {
+    display: none;
+  }
+  .center {
+    position: static;
+    left: 0;
+  }
+  .center > .breadcrumbs {
+    position: static;
+  }
+  .center > .content {
+    position: static;
+  }
+  .footer {
+    position: static;
+  }
+  /*
+  	.sidebar {
+  		position: absolute;
+	    top: 0;
+	    width: 85%;
+	    height: 100%;
+	    left: -85%;
+	    background: rgba(0, 0, 0, 0.1);
+  	}
+  	
+  #wrap.active {
+    left: 85%;
+  }
+  #right-columns {
+    width: auto;
+  } */
+}
+/* Tablets
+----------------------------------*/
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  /* #sidebar {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    left: -50%;
+    background: rgba(0, 0, 0, 0.1);
+  }
+  #main {
+    -webkit-transition: all 0.25s ease-out;
+    -moz-transition: all 0.25s ease-out;
+    -ms-transition: all 0.25s ease-out;
+    -o-transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out;
+    overflow: visible;
+  }
+  #main.active {
+    left: 50%;
+  } */
+}
+/* Phones & Tablets 
+----------------------------------*/
+@media screen and (max-width: 991px) {
+  /* body {
+    background: #FFFFFF;
+    overflow-x: hidden;
+    font-size: 2em;
+  }
+  #wrap {
+    width: 100%;
+  }
+  a.sidebar-link {
+    float: left;
+    display: block;
+    padding: 0 1em;
+  }
+  a.nav-link {
+    float: right;
+    display: block;
+    padding: 0 1em;
+  }
+  #header {
+    top: 0;
+  }
+  #nav {
+    clear: both;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+    top: auto;
+    overflow: hidden;
+    max-height: 0;
+    background: rgba(0, 0, 0, 0.1);
+  }
+  #nav.active {
+    max-height: 55em;
+  } */
+}
+/* Desktops
+----------------------------------*/
+/*
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  
+}
+*/
+/* Wide Desktops
+----------------------------------*/
+/*
+@media screen and (min-width: 1200px) {
+  
+}
+*/

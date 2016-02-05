@@ -1,0 +1,154 @@
+//
+// Mixins
+// --------------------------------------------------
+
+// Border
+// -------------------------
+.border(@width; @style; @color) {
+    border: @width @style @color;
+}
+
+// Padding
+// -------------------------
+.padding(@padding) {
+    padding: @padding;
+}
+.padding(@horizontal; @vertical) {
+    padding: @horizontal @vertical @horizontal @vertical;
+}
+.padding(@top; @vertical; @bottom) {
+    padding: @top @vertical @bottom @vertical;
+}
+.padding(@top; @right; @bottom; @left) {
+    padding: @top @right @bottom @left;
+}
+.padding-top(@value) {
+    padding-top: @value;
+}
+.padding-right(@value) {
+    padding-right: @value;
+}
+.padding-bottom(@value) {
+    padding-bottom: @value;
+}
+.padding-left(@value) {
+    padding-left: @value;
+}
+
+// Space
+// -------------------------
+/*
+example)
+.vspace-2 {
+  .vspace(2px, 1px);
+}
+*/
+.vspace(@top; @bottom) {
+  max-height: 1px;
+  min-height: 1px;
+  overflow: hidden;
+  margin: 12px 0;
+  margin: 2px 0 1px 0;
+}
+
+/*
+example)
+.hspace-2 {
+  .hspace(2px, 1px);
+}
+*/
+.hspace(@right; @left) {
+  max-width: 1px;
+  min-width: 1px;
+  overflow: hidden;
+  margin: 0 12px;
+  margin: 0 @right 0 @left;
+}
+    
+// Position
+// -------------------------
+/* 
+position 기본값은 static이다.
+
+example)
+.right-bottom-position-200 {
+  .right-bottom-position(fixed);
+  width: 200px;
+}
+*/
+.right-bottom-position(@position: static) {
+  position: @position;
+  right: 0;
+  bottom: 0;
+}
+
+.left-top-position(@position: static) {
+  position: @position;
+  top: 0;
+  left: 0;
+}
+
+/* 레이아웃 컴포넌트 할때 아래 스타일이 필요하다.
+.label {
+  top: 0;
+  left: 0;
+  padding: 0 3px 3px 0;
+}
+
+.endlabel {
+  right: 0;
+  bottom: 0;
+  padding: 3px 0 0 3px;
+}
+
+.border-red-2 > .label, .border-red-2 > .endlabel{
+  color: white;
+  background-color: #D64078;
+}
+*/
+
+// Labels (샘플)
+// -------------------------
+.label-variant(@color) {
+  background-color: @color;
+  &[href] {
+    &:hover,
+    &:focus {
+      background-color: darken(@color, 10%);
+    }
+  }
+}
+
+// Drop shadows
+//
+// Note: Deprecated `.box-shadow()` as of v3.1.0 since all of Bootstrap's
+//   supported browsers that have box shadow capabilities now support the
+//   standard `box-shadow` property.
+.box-shadow(@shadow) {
+  -webkit-box-shadow: @shadow; // iOS <4.3 & Android <4.1
+          box-shadow: @shadow;
+}
+
+// Transitions
+.transition(@transition) {
+  -webkit-transition: @transition;
+          transition: @transition;
+}
+.transition-property(@transition-property) {
+  -webkit-transition-property: @transition-property;
+          transition-property: @transition-property;
+}
+.transition-delay(@transition-delay) {
+  -webkit-transition-delay: @transition-delay;
+          transition-delay: @transition-delay;
+}
+.transition-duration(@transition-duration) {
+  -webkit-transition-duration: @transition-duration;
+          transition-duration: @transition-duration;
+}
+.transition-transform(@transition) {
+  -webkit-transition: -webkit-transform @transition;
+     -moz-transition: -moz-transform @transition;
+       -o-transition: -o-transform @transition;
+          transition: transform @transition;
+}

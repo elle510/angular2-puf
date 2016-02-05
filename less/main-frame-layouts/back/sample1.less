@@ -1,0 +1,340 @@
+//
+// Main Layout - Sample
+// 
+// --------------------------------------------------
+
+// reset
+/* * {
+  margin: 0;
+  padding: 0;
+} */
+
+body {
+  //line-height: 1;
+  background: #BBCFE8;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  color: #333;
+  font-size: 14px;
+  //line-height: 18px;
+}
+
+// eader, footer, section, aside, nav, article 태그의 공통 style
+// ---------------------------------------------------------------------
+header, footer, section, aside, nav, article, 
+div.header, div.footer, div.section, div.aside, div.nav, div.article {
+  display: block;
+  border: 1px solid #000000;
+}
+
+header, div.header {
+  
+}
+
+nav, div.nav {
+  
+}
+
+section, div.section {
+  
+}
+
+article, div.article {
+  
+}
+
+aside, div.aside {
+  
+}
+
+footer, div.footer {
+  
+}
+
+// 메인화면의 최상위 태그
+// <div id="wrap"></div>
+// ---------------------------------------------------------
+#wrap {
+  width: 1280px;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 3px solid #888;
+  background: #fff;
+  /* curved border radius */
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+}
+
+// 메인화면의 header 태그
+// <header id="header"></header> or <div id="header" class="header"></div>
+// ------------------------------------------------------------------------
+/*header#header, div#header*/
+#header {
+  position: relative;
+  //width: 100%;
+  height: 100px;
+  margin: 0 auto;
+  top: 50px;
+  //padding: 20px 0 0 0;
+}
+
+// 메인화면의 nav 태그
+// <nav id="nav"></nav> or <div id="nav" class="nav"></div>
+// ------------------------------------------------------------------------
+/*nav#nav, div#nav*/
+#nav {
+  position: relative;
+  //width: 100%;
+  height: 50px;
+  margin: 0 auto;
+  top: -100px;
+  //background: #3d6497;
+  //margin-top: -5px;
+}
+
+// 메인화면의 top columns 영역
+// <aside id="top-columns"></aside> or <div id="top-columns" class="aside"></div>
+// ------------------------------------------------------------------------
+#top-columns {
+  display: none;
+}
+
+// 메인화면의 main 영역 태그
+// <section id="main"></section> or <div id="main" class="section"></div>
+// ------------------------------------------------------------------------
+/*section#main, div#main*/
+#main {
+  position: relative;
+  //width: 100%;
+  margin: 0 auto;
+  padding-top: 30px;
+  /*background: #FFF url(images/colbg.png) repeat-y;*/
+  overflow: hidden;
+  
+  display: -webkit-flex;
+  display:         flex;
+  -webkit-flex-flow: row;
+          flex-flow: row;
+}
+
+// 메인화면의 content 영역 태그 (main 영역 안에 존재)
+// <section id="content"></section> or <div id="content" class="section"></div>
+// ------------------------------------------------------------------------------
+/*section#content, div#content*/
+#content {
+  //float: right;
+  //width: 680px;
+  //margin-right: 30px;
+  
+  -webkit-flex: 1;
+          flex: 1;
+  /*
+   -webkit-flex: 3 1 60%;
+           flex: 3 1 60%;
+   -webkit-order: 2;
+           order: 2;
+           */
+}
+
+// 메인화면의 sidebar 영역 태그 (main 영역 안에 존재)
+// <aside id="sidebar"></aside> or <div id="sidebar" class="aside"></div>
+// -----------------------------------------------------------------------
+/*aside#sidebar, div#sidebar*/
+#sidebar {
+  //float: left;
+  //padding-left: 20px;
+  width: 220px;
+  
+  /*
+  -webkit-flex: 1 6 20%;
+           flex: 1 6 20%;
+  -webkit-order: 1;
+          order: 1;
+   */
+}
+
+// 메인화면의 left columns 영역 (main 영역 안에 존재)
+// <aside id="left-columns"></aside> or <div id="left-columns" class="aside"></div>
+// ----------------------------------------------------------------------------------
+#left-columns {
+  display: none;
+}
+
+// 메인화면의 right columns 영역 (main 영역 안에 존재)
+// <aside id="right-columns"></aside> or <div id="right-columns" class="aside"></div>
+// -----------------------------------------------------------------------------------
+#right-columns {
+  width: 250px;
+  /*
+   -webkit-flex: 1 6 20%;
+           flex: 1 6 20%;
+   -webkit-order: 3;
+           order: 3;
+           */
+}
+
+// 메인화면의 bottom columns 영역
+// <aside id="bottom-columns"></aside> or <div id="bottom-columns" class="aside"></div>
+// ------------------------------------------------------------------------
+#bottom-columns {
+  
+}
+
+// 메인화면의 footer 태그
+// <footer id="footer"></footer> or <div id="footer" class="footer"></div>
+// -----------------------------------------------------------------------
+/*footer#footer, div#footer*/
+#footer {
+  //width: 940px;
+  height: 70px;
+  margin: 0 auto;
+  //clear: both;
+}
+
+//
+// Responsive
+// --------------------------------------------------
+
+a.sidebar-link {
+  display: none;
+}
+
+a.nav-link {
+  display: none;
+}
+
+/* Phones
+----------------------------------*/
+@media screen and (max-width: 767px) {
+  
+  #wrap {
+    position: relative;
+    -webkit-transition: all 0.25s ease-out;
+    -moz-transition: all 0.25s ease-out;
+    -ms-transition: all 0.25s ease-out;
+    -o-transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out;
+  }
+  
+  #main {
+    display: block;
+  }
+  
+  #sidebar {
+    //float: left;
+    position: absolute;
+    top: 0;
+    width: 85%;
+    height: 100%;
+    left: -85%;
+    background: rgba(0,0,0,0.1);
+  }
+  
+  #wrap.active {
+    left: 85%;
+  }
+  
+  #right-columns {
+    width: auto;
+  }
+}
+
+/* Tablets
+----------------------------------*/
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  #sidebar {
+    //float: left;
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    left: -50%;
+    background: rgba(0,0,0,0.1);
+  }
+  
+  #main {
+    
+    -webkit-transition: all 0.25s ease-out;
+    -moz-transition: all 0.25s ease-out;
+    -ms-transition: all 0.25s ease-out;
+    -o-transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out;
+    
+    overflow: visible;
+  }
+  
+  #main.active {
+    left: 50%;
+  }
+}
+
+/* Phones & Tablets 
+----------------------------------*/
+@media screen and (max-width: 991px) {
+  body {
+    background: #FFFFFF;
+    overflow-x: hidden;
+    font-size: 2em;
+  }
+  
+  #wrap {
+    width: 100%;
+  }
+  
+  a.sidebar-link {
+    float: left;
+    display: block;
+    padding: 0 1em;
+  }
+  
+  a.nav-link {
+    float: right;
+    display: block;
+    padding: 0 1em;
+  }
+  
+  // nav
+  #header {
+    top: 0;
+  }
+  
+  #nav {
+    clear: both;
+    -webkit-transition: all 0.3s ease-out;  
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+    
+    top: auto;
+    overflow: hidden;
+    max-height: 0;
+    background: rgba(0,0,0,0.1);
+  }
+  
+  #nav.active {
+    max-height: 55em;
+  }
+}
+
+/* Desktops
+----------------------------------*/
+/*
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  
+}
+*/
+@media (min-width: 992px) {
+  
+}
+
+/* Wide Desktops
+----------------------------------*/
+/*
+@media screen and (min-width: 1200px) {
+  
+}
+*/
+@media (min-width: 1200px) {
+  
+}

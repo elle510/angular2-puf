@@ -1,0 +1,132 @@
+//
+// jQuery UI Costom
+//
+// jquery ui 에서 common 성격에 해당되는 것을 오버라이딩 하거나 추가한다.
+// -----------------------------------------------------------------------
+
+/* jquery-ui (override)
+----------------------------------*/
+/* 1.10.4.custom 버전
+.ui-progressbar {
+    .ui-progressbar-overlay {
+        background: url("../images/animated-overlay.gif");
+    }
+}
+
+.ui-widget-content {
+    background: #ffffff url(../images/ui-bg_flat_10_000000_40x100) 50% 50% repeat-x;
+}
+
+.ui-widget-header {
+    background: #cccccc url(../images/ui-bg_highlight-soft_75_cccccc_1x100.png) 50% 50% repeat-x;
+}
+
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default {
+    background: #e6e6e6 url(../images/ui-bg_glass_75_e6e6e6_1x400.png) 50% 50% repeat-x;
+}
+
+.ui-state-hover,
+.ui-widget-content .ui-state-hover,
+.ui-widget-header .ui-state-hover,
+.ui-state-focus,
+.ui-widget-content .ui-state-focus,
+.ui-widget-header .ui-state-focus {
+  background: #dadada url(../images/ui-bg_glass_75_dadada_1x400.png) 50% 50% repeat-x;
+}
+
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active {
+    background: #ffffff url(../images/ui-bg_glass_65_ffffff_1x400.png) 50% 50% repeat-x;
+}
+
+.ui-state-highlight,
+.ui-widget-content .ui-state-highlight,
+.ui-widget-header .ui-state-highlight {
+    background: #fbf9ee url(../images/ui-bg_glass_55_fbf9ee_1x400.png) 50% 50% repeat-x;
+}
+
+.ui-state-error,
+.ui-widget-content .ui-state-error,
+.ui-widget-header .ui-state-error {
+    background: #fef1ec url(../images/ui-bg_glass_95_fef1ec_1x400.png) 50% 50% repeat-x;
+}
+
+.ui-icon,
+.ui-widget-content .ui-icon {
+    background-image: url(../images/ui-icons_222222_256x240.png);
+}
+.ui-widget-header .ui-icon {
+    background-image: url(../images/ui-icons_222222_256x240.png);
+}
+.ui-state-default .ui-icon {
+    background-image: url(../images/ui-icons_888888_256x240.png);
+}
+.ui-state-hover .ui-icon,
+.ui-state-focus .ui-icon {
+    background-image: url(../images/ui-icons_454545_256x240.png);
+}
+.ui-state-active .ui-icon {
+    background-image: url(../images/ui-icons_454545_256x240.png);
+}
+.ui-state-highlight .ui-icon {
+    background-image: url(../images/ui-icons_2e83ff_256x240.png);
+}
+.ui-state-error .ui-icon,
+.ui-state-error-text .ui-icon {
+    background-image: url(../images/ui-icons_cd0a0a_256x240.png);
+}
+
+.ui-widget-overlay {
+    background: #aaaaaa url(../images/ui-bg_flat_0_aaaaaa_40x100.png) 50% 50% repeat-x;
+}
+.ui-widget-shadow {
+    background: #aaaaaa url(../images/ui-bg_flat_0_aaaaaa_40x100.png) 50% 50% repeat-x;
+}
+*/
+
+// 1.11.4
+.ui-icon,
+.ui-widget-content .ui-icon {
+	background-image: url("/puf/images/ui-icons_444444_256x240.png");
+}
+.ui-widget-header .ui-icon {
+	background-image: url("/puf/images/ui-icons_444444_256x240.png");
+}
+.ui-state-default .ui-icon {
+	background-image: url("/puf/images/ui-icons_777777_256x240.png");
+}
+.ui-state-hover .ui-icon,
+.ui-state-focus .ui-icon {
+	background-image: url("/puf/images/ui-icons_555555_256x240.png");
+}
+.ui-state-active .ui-icon {
+	background-image: url("/puf/images/ui-icons_ffffff_256x240.png");
+}
+.ui-state-highlight .ui-icon {
+	background-image: url("/puf/images/ui-icons_777620_256x240.png");
+}
+.ui-state-error .ui-icon,
+.ui-state-error-text .ui-icon {
+	background-image: url("/puf/images/ui-icons_cc0000_256x240.png");
+}
+
+// 그리드의 row를 선택했을때 highlight의 border color override
+//.ui-state-highlight,
+//.ui-widget-content .ui-state-highlight,
+//.ui-widget-header .ui-state-highlight {
+//  border: 1px solid #aaaaaa;
+//}
+
+/* jquery-ui (tabs)
+----------------------------------*/
+.ui-icon-close { 
+  float: left; 
+  margin: 0.6em 0.2em; 
+  cursor: pointer; 
+}
+.ui-icon-close:before {
+  content: "\f00d";
+}

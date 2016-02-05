@@ -7,6 +7,7 @@ var uglifycss = require('gulp-uglifycss');
 var minifyhtml = require('gulp-minify-html');
 var stripComments = require('gulp-strip-comments');
 var stripDebug = require('gulp-strip-debug');
+var less = require('gulp-less');
 
 var typescript = require('gulp-typescript');
 var sourcemaps = require('gulp-sourcemaps');
@@ -16,10 +17,8 @@ var path = require("path");
 var Builder = require('systemjs-builder');
 
 var del = require('del');
-
+var merge2 = require('merge2');
 var runSequence = require('run-sequence');
-
-var less = require('gulp-less');
 
 //-----------------------
 // configuration
@@ -28,20 +27,30 @@ var less = require('gulp-less');
 var SRC_PATH = 'puf-src';
 var BUILD_PATH = 'puf-build/scripts';
 var BUILD_BUNDLE_PATH = 'puf-build/scripts/bundles';
-var DIST_PATH = 'puf-dist';
+var DIST_PATH = 'puf-dist/puf/scripts';
 
 // css
 var LESS_PATH = 'less';
 var BUILD_CSS_PATH = 'puf-build/styles';
-var DIST_CSS_PATH = 'puf-dist/styles';
+var DIST_CSS_PATH = 'puf-dist/puf/styles';
 
 var CONFIG = {
 	src_files: SRC_PATH + '/**/*.ts',
 	build_files: BUILD_PATH + '/**/*.js',
 	bundle_files: BUILD_BUNDLE_PATH + '/*.js',
-	less_files: LESS_PATH + '/**/*.less',
-	css_files: BUILD_CSS_PATH + '/**/*.css'
-	//html: BUILD + '/**/*.html'
+	
+	// less 경로
+	common_less: LESS_PATH + '/common/common.less',
+	themes_less: LESS_PATH + '/themes/*.less',
+	frame_less: LESS_PATH + '/main-frame-layouts/*.less',
+	skins_less: LESS_PATH + '/skins/*.less',
+	login_less: LESS_PATH + '/login/*.less',
+	visualization_less: LESS_PATH + '/visualization/visualization.less',
+	
+	// 배포할 빌드 CSS
+	common_css: BUILD_CSS_PATH + '/common.css',
+	themes_css: BUILD_CSS_PATH + '/themes/*.css',
+	visualization_css: BUILD_CSS_PATH + '/visualization.css'
 };
 
 var PUF_BUNDLE_CONFIG = [
@@ -70,7 +79,7 @@ gulp.task('clean.js:build', function() {
 });
 
 gulp.task('clean.js:dist', function() {
-	return del(DIST_PATH + '/**/*.js');
+	return del(DIST_PATH);
 });
 
 // TypeScript compile
@@ -127,7 +136,7 @@ gulp.task('bundle', ['compile'], function() {
 	
 });
 
-gulp.task('dist.js', ['bundle'], function() {
+gulp.task('dist.js', ['clean.js:dist', 'bundle'], function() {
 	return gulp.src(CONFIG.bundle_files)
 				//.pipe(stripComments())
 				//.pipe(concat('puf.js', {newLine: '\n'}))
@@ -136,7 +145,7 @@ gulp.task('dist.js', ['bundle'], function() {
 });
 
 // 자바스크립트 파일을 하나로 합치고 압축한다.
-gulp.task('dist.js:min', ['bundle'], function() {
+gulp.task('dist.js:min', ['clean.js:dist', 'bundle'], function() {
 	return gulp.src(CONFIG.bundle_files)
 				.pipe(stripDebug())
 				.pipe(uglify())
@@ -158,33 +167,70 @@ gulp.task('clean.css:dist', function() {
 });
 
 gulp.task('less', ['clean.css:build'], function() {
-	return gulp.src(CONFIG.less_files)
-				/*
-	    		.pipe(less({
-	    			paths: [ path.join(__dirname, 'less', 'includes') ]
-	    		}))
-	    		*/
-				.pipe(less())
-	    		.pipe(gulp.dest(BUILD_CSS_PATH));
+	return merge2(
+				gulp.src(CONFIG.common_less)
+					.pipe(less())
+					.pipe(gulp.dest(BUILD_CSS_PATH)),
+				gulp.src(CONFIG.themes_less)
+					.pipe(less())
+					.pipe(gulp.dest(BUILD_CSS_PATH + '/themes')),
+				gulp.src(CONFIG.frame_less)
+					.pipe(less())
+					.pipe(gulp.dest(BUILD_CSS_PATH + '/main-frame-layouts')),
+				gulp.src(CONFIG.skins_less)
+					.pipe(less())
+					.pipe(gulp.dest(BUILD_CSS_PATH + '/skins')),
+				gulp.src(CONFIG.login_less)
+					.pipe(less())
+					.pipe(gulp.dest(BUILD_CSS_PATH + '/login')),
+				gulp.src(CONFIG.visualization_less)
+					.pipe(less())
+					.pipe(gulp.dest(BUILD_CSS_PATH))
+			);
+	
+//	return gulp.src([CONFIG.common_less, CONFIG.themes_less])
+//				/*
+//	    		.pipe(less({
+//	    			paths: [ path.join(__dirname, 'less', 'includes') ]
+//	    		}))
+//	    		*/
+//				.pipe(less())
+//	    		.pipe(gulp.dest(BUILD_CSS_PATH));
 });
 
 gulp.task('dist.css', ['clean.css:dist', 'less'], function() {
-	return gulp.src(CONFIG.css_files)	    		
-	    		.pipe(gulp.dest(DIST_CSS_PATH));
+	return merge2(gulp.src(CONFIG.common_css).pipe(gulp.dest(DIST_CSS_PATH)),
+				gulp.src(CONFIG.themes_css).pipe(gulp.dest(DIST_CSS_PATH + '/themes')),
+				gulp.src(CONFIG.visualization_css).pipe(gulp.dest(DIST_CSS_PATH)));
 });
 
 gulp.task('dist.css:min', ['clean.css:dist','less'], function() {
 	var rename = require('gulp-rename');
 	
-	return gulp.src(CONFIG.css_files)
-	    		/*
-				.pipe(uglifycss({
-	    			"max-line-len": 80
-	    		}))
-	    		*/
-				.pipe(uglifycss())
-				.pipe(rename({extname: '.min.css'}))
-	    		.pipe(gulp.dest(DIST_CSS_PATH));
+	return merge2(
+				gulp.src(CONFIG.common_css)
+					.pipe(uglifycss())
+					.pipe(rename({extname: '.min.css'}))
+					.pipe(gulp.dest(DIST_CSS_PATH)),
+				gulp.src(CONFIG.themes_css)
+					.pipe(uglifycss())
+					.pipe(rename({extname: '.min.css'}))
+					.pipe(gulp.dest(DIST_CSS_PATH + '/themes')),
+				gulp.src(CONFIG.visualization_css)
+					.pipe(uglifycss())
+					.pipe(rename({extname: '.min.css'}))
+					.pipe(gulp.dest(DIST_CSS_PATH))
+			);
+	
+//	return gulp.src(CONFIG.css_files)
+//	    		/*
+//				.pipe(uglifycss({
+//	    			"max-line-len": 80
+//	    		}))
+//	    		*/
+//				.pipe(uglifycss())
+//				.pipe(rename({extname: '.min.css'}))
+//	    		.pipe(gulp.dest(DIST_CSS_PATH));
 });
 
 //-----------------------
@@ -229,9 +275,23 @@ gulp.task('build.tutorial', ['clean.tutorial'], function() {
 });
 
 //-----------------------
+// puf copy
+
+gulp.task('puf:clean', function() {
+	return del('webapps/puf');
+});
+
+gulp.task('puf:copy', ['puf.js:clean', 'bundle'], function() {
+	return gulp.src('puf-dist/puf/**/*')
+				.pipe(gulp.dest('webapps/puf'));
+});
+
+//-----------------------
 // task 설정
 
-gulp.task('clean', ['clean.js', 'clean.css']);								// puf js/css clean
-gulp.task('build', ['compile', 'bundle', 'dist.js', 'dist.js:min']);		// puf js
-gulp.task('css', ['less', 'dist.css', 'dist.css:min']);						// puf css
-gulp.task('default', ['build', 'css', 'build.demo', 'build.tutorial']);		// puf/puf-demo/tutorial
+gulp.task('clean', ['clean.js', 'clean.css']);											// puf js/css clean
+gulp.task('puf.js', ['compile', 'bundle', 'dist.js', 'dist.js:min', 'puf.js:copy']);	// puf js
+gulp.task('puf.css', ['less', 'dist.css', 'dist.css:min']);								// puf css
+gulp.task('puf', ['puf.js', 'puf.css', 'puf:copy']);												// puf js/css
+gulp.task('build.app', ['build.demo', 'build.tutorial']);								// puf-demo/tutorial
+gulp.task('default', ['puf.js', 'puf.css', 'build.demo', 'build.tutorial']);			// puf/puf-demo/tutorial

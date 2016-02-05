@@ -1,0 +1,92 @@
+//
+// Variables
+// --------------------------------------------------
+
+@baseFontSize: 13px;
+@sansFontFamily: "Open Sans";
+@body-background: #E4E6E9;
+@text-color: #393939;
+
+@sidebar-width: 190px;
+@sidebar-min-width: 43px;//sidebar minimum width
+@sidebar-compact-width: 105px;
+
+@breadcrumb-height: 41px;
+@breadcrumb-arrow-color: #B2B6BF;
+@page-content-padding-top: 8px;
+
+//== Colors
+//
+//## bootstrap-datetimepicker.less에서 사용하는 변수가 있어서 Bootstrap 변수를 그대로 사용함
+//## Gray and brand colors for use across Bootstrap.
+
+@gray-darker:            lighten(#000, 13.5%); // #222
+@gray-dark:              lighten(#000, 20%);   // #333
+@gray:                   lighten(#000, 33.5%); // #555
+@gray-light:             lighten(#000, 60%);   // #999
+@gray-lighter:           lighten(#000, 93.5%); // #eee
+
+@brand-primary:         #428bca;
+
+//== Typography
+//
+//## bootstrap-datetimepicker.less에서 사용하는 변수가 있어서 Bootstrap 변수를 그대로 사용함
+//## Font, line-height, and color for body text, headings, and more.
+
+@font-size-base:          14px;
+
+//== Buttons
+//
+//## bootstrap-datetimepicker.less에서 사용하는 변수가 있어서 Bootstrap 변수를 그대로 사용함
+//## For each of Bootstrap's buttons, define text, background and border color.
+
+@btn-primary-bg:                 @brand-primary;
+
+
+// Event colors
+// -------------------------
+@event-info:		#428bca;
+@event-minor:		#5cb85c;
+@event-major:		#f0ad4e;
+@event-critical:	#d9534f;
+@event-down:		#5bc0de;
+
+//== Media queries breakpoints
+//
+//## Define the breakpoints at which your layout will change, adapting to different screen sizes.
+
+// Extra small screen / phone
+// Note: Deprecated @screen-xs and @screen-phone as of v3.0.1
+@screen-xs:                  480px;
+@screen-xs-min:              @screen-xs;
+@screen-phone:               @screen-xs-min;
+
+// Small screen / tablet
+// Note: Deprecated @screen-sm and @screen-tablet as of v3.0.1
+@screen-sm:                  768px;
+@screen-sm-min:              @screen-sm;
+@screen-tablet:              @screen-sm-min;
+
+// Medium screen / desktop
+// Note: Deprecated @screen-md and @screen-desktop as of v3.0.1
+@screen-md:                  992px;
+@screen-md-min:              @screen-md;
+@screen-desktop:             @screen-md-min;
+
+// Large screen / wide desktop
+// Note: Deprecated @screen-lg and @screen-lg-desktop as of v3.0.1
+@screen-lg:                  1200px;
+@screen-lg-min:              @screen-lg;
+@screen-lg-desktop:          @screen-lg-min;
+
+// So media queries don't overlap when required, provide a maximum
+@screen-xs-max:              (@screen-sm-min - 1);
+@screen-sm-max:              (@screen-md-min - 1);
+@screen-md-max:              (@screen-lg-min - 1);
+
+//~Form Elements
+@enable-checkbox:						true;//Custom CSSx Checkbox and Radio Elements
+@enable-switch:							true;//Custom Switch (On/Off) Elements				+@enable-checkbox
+@enable-switch-style-4:					true;//Switch Elements Style #4 #5 					+@enable-switch
+@enable-switch-style-6:					true;//Switch Elements Style #6 					+@enable-switch
+@enable-switch-style-7:					true;//Switch Elements Style #7

@@ -1,0 +1,56 @@
+//
+// fieldset-default.less
+//
+// fieldset tag
+// 
+// --------------------------------------------------
+
+/* fieldset-default
+----------------------------------*/
+.fieldset.collapsible {
+    border-width: 1px 0 0 0;
+    font-size: 0.9em;
+    padding-left: 0;
+    
+    & > legend {
+        padding-left: 0;
+        //background: url(../images/arrow_expanded.png) no-repeat 0% 40%;
+        cursor: pointer;
+    }
+    & > legend:before {
+        font-family: 'FontAwesome';
+        content: "\f0d7";
+    }
+}
+.fieldset.collapsed {
+    border-width: 1px 0 0 0;
+    font-size: 0.9em;
+    
+    & > legend:before {
+        font-family: 'FontAwesome';
+        content: "\f0da";
+    }
+}
+.fieldset {
+    border: 1px solid #000000/*#e4e4e4*/;
+    margin: 0;
+    display: block;
+    padding: 0;
+  	padding-left: 10px;
+}
+.fieldset {
+	& > legend {
+		color: #000000/*#484848*/;
+    	display: block;
+    	padding: 0;
+    	margin: 0;
+    	padding-left: 5px;
+    	padding-right: 5px;
+  		border: 0;
+  		//border-top: 1px solid #000000;
+  		width: auto;
+  		font-size: 15px;
+  		line-height: inherit;
+  		
+	}
+}

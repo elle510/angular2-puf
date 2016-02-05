@@ -1,0 +1,47 @@
+//
+// Mixins
+// --------------------------------------------------
+// Border
+// -------------------------
+.border(@width; @style; @color) {
+    border: @width @style @color;
+}
+
+// Padding
+// -------------------------
+.padding(@padding) {
+    padding: @padding;
+}
+.padding(@horizontal; @vertical) {
+    padding: @horizontal @vertical @horizontal @vertical;
+}
+.padding(@top; @vertical; @bottom) {
+    padding: @top @vertical @bottom @vertical;
+}
+.padding(@top; @right; @bottom; @left) {
+    padding: @top @right @bottom @left;
+}
+.padding-top(@value) {
+    padding-top: @value;
+}
+.padding-right(@value) {
+    padding-right: @value;
+}
+.padding-bottom(@value) {
+    padding-bottom: @value;
+}
+.padding-left(@value) {
+    padding-left: @value;
+}
+
+// Labels (샘플)
+// -------------------------
+.label-variant(@color) {
+  background-color: @color;
+  &[href] {
+    &:hover,
+    &:focus {
+      background-color: darken(@color, 10%);
+    }
+  }
+}

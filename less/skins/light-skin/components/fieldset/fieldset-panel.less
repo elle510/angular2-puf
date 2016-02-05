@@ -1,0 +1,78 @@
+//
+// fieldset-default.less
+//
+// fieldset tag
+// 
+// --------------------------------------------------
+
+/* fieldset-default
+----------------------------------*/
+.panel.fieldset.collapsible {
+    //border-width: 1px 0 0 0;
+    font-size: 0.9em;
+    & > legend {
+        padding-left: 0;
+        //background: url(../images/arrow_expanded.png) no-repeat 0% 40%;
+        cursor: pointer;
+    }
+    & > legend:before {
+        font-family: 'FontAwesome';
+        content: "\f0d7";
+    }
+}
+.panel.fieldset.collapsed {
+    //border-width: 1px 0 0 0;
+    font-size: 0.9em;
+    & > legend:before {
+        font-family: 'FontAwesome';
+        content: "\f0da";
+    }
+}
+.panel.fieldset {
+    border: 1px solid #000000/*#e4e4e4*/;
+    margin: 0;
+    display: block;
+    padding: 0;
+  	
+  	min-width: 1px;
+  	
+  
+  	/*
+    -webkit-margin-start: 2px;
+    -webkit-margin-end: 2px;
+    -webkit-padding-before: 0.35em;
+    -webkit-padding-start: 0.75em;
+    -webkit-padding-end: 0.75em;
+    -webkit-padding-after: 0.625em;
+    min-width: -webkit-min-content;
+    */
+}
+.panel.fieldset {
+	& > legend {
+		color: #484848;
+    	display: block;
+    	
+    	padding: 0;
+  		border: 1px solid;
+  
+  		
+  		width: 100%;
+  		//margin-bottom: 20px;
+  		font-size: 12px;
+  		line-height: inherit;
+  		//border-bottom: 1px solid #e5e5e5;
+  
+    	/*
+    	-webkit-padding-start: 2px;
+    	-webkit-padding-end: 2px;
+    	*/
+    	//border: none;
+    	/*
+    	border-image-source: initial;
+    	border-image-slice: initial;
+    	border-image-width: initial;
+    	border-image-outset: initial;
+    	border-image-repeat: initial;
+    	*/
+	}
+}

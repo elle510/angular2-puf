@@ -1,0 +1,33 @@
+//
+// searchFilter.less
+// searchFilter.css 를 less 로 변환
+// --------------------------------------------------
+
+/* SearchFilter
+----------------------------------*/
+.ui-searchFilter {
+    display: none;
+    position: absolute;
+    z-index: 770;
+    overflow: visible;
+    .divider {
+        hr {
+            margin: 1px;
+        }
+    }
+    table {
+        position:relative;
+        margin:0em;
+        width:auto;
+        td {
+            margin: 0em;
+            padding: 1px;
+        }
+    }
+    .ui-state-default {
+        cursor: pointer;
+    }
+}
+.ui-searchFilter table td input, .ui-searchFilter table td select {
+    margin: 0.1em;
+}

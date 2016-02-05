@@ -1,0 +1,101 @@
+//
+// tab-default.less
+// bootstrap에서 tab관련 부분을 less 로 변환 (bootstrap을 이용한 tab 기본 제공 css)
+// --------------------------------------------------
+
+/* tab
+----------------------------------*/
+/*
+.nav-tabs {
+	li {
+		a {          
+			cursor: pointer;
+		}
+	}
+}
+*/
+.nav-tabs {
+    & > li {
+        & > a {
+            cursor: pointer;
+        }
+    }
+}
+   
+/* tab(vertical)
+----------------------------------*/
+.tabs-left {
+    //margin-top: 3rem;
+    .nav-tabs {
+        float: left;
+        /*border-bottom: 0;*/
+        border-right: 1px solid #ddd;
+        li {
+            float: none;
+            margin: 0;
+            a {
+                margin-right: 0;
+  				/*
+                border: 0;
+                background-color: #333;
+                */
+                cursor: pointer;
+                border: 1px solid transparent;
+  				border-radius: 4px 0 4px 0;
+            }
+            a:hover {
+                /*background-color: #444;*/
+                border-color: #eee #eee #ddd;
+            }
+        }
+        .glyphicon {
+            color: #fff;
+        }
+        .active {
+            .glyphicon {
+                color: #333;
+            }
+        }
+    }
+    .tab-content {
+        margin-left: 45px;
+        //height: 100%;			// 추가된 코드
+        .tab-pane {
+        	//position: absolute; // 추가된 코드
+        	//top: 0;				// 추가된 코드
+    		//bottom: 80px;		// 추가된 코드
+            display: none;
+            background-color: #fff;
+            padding: 1.6rem;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            border-left-color: transparent;
+        }
+        .active {
+            display: block;
+        }
+    }
+    .list-group {
+        width: 100%;
+        .list-group-item {
+            height: 50px;
+        }
+    }
+}
+.tabs-left {
+	.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+		/*border: 0;*/
+    	border: 1px solid #ddd;
+  		border-right-color: transparent;
+	}
+	//.nav-tabs &>li.active &>a, .nav-tabs &>li.active &>a:hover, .nav-tabs &>li.active &>a:focus {
+		/*border: 0;*/
+    	//border: 1px solid #ddd;
+  		//border-right-color: transparent;
+	//}
+}
+.tabs-left {
+	.list-group .list-group-item h4, .list-group .list-group-item span {
+		line-height: 11px;
+	}
+}

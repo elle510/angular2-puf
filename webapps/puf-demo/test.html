@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>UI 개발 가이드</title>
+</head>
+<body>
+Angular2 Start
+
+<script type="text/javascript">
+	var ANGULAR2_BUNDLE_CONFIG = [
+                              'angular2/common',
+                              'angular2/core',
+                              'angular2/compiler',
+                              'angular2/instrumentation',
+                              'angular2/platform/browser',
+                              'angular2/platform/common_dom'
+                            ];
+
+	var NG2_BUNDLE_CONTENT = ANGULAR2_BUNDLE_CONFIG.join(' + ') + ' - rxjs/*';
+	console.log(NG2_BUNDLE_CONTENT);
+</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+//
+// Common
+// padding, space, layout 등과 같이 theme와 관련없는 디자인 요소
+//
+// jquery.ui에서
+// 이미지 경로와 같이 수정이 필요한 요소는 jquery-ui-custom.less에서 오버라이딩 한다.
+// 추가적인 요소는 jquery-ui-custom.less에 추가한다.
+// (원본 CSS소스는 수정하지 않는다.)
+//
+// Component CSS는 Component에서 제공하는 기본 CSS이며 원본 CSS이므로 수정하면 안된다.
+//
+// import 하는 less 순서는 아래와 같이 한다.(바뀌면 안됨)
+// --------------------------------------------------
+
+// Core variables and mixins
+@import "variables.less";
+@import "mixins.less";
+
+// Fonts
+@import "fonts.less";
+
+// Box Model
+@import "border.less";
+@import "outline.less";
+@import "margin.less";
+@import "padding.less";
+
+// mouse pointer
+@import "mouse-pointer.less";
+
+// Bootstrap
+@import "bootstrap-common.less";
+
+// jQuery UI (메인페이지에서 원본css를 추가하는 방법으로 하자.)
+//@import "jquery-ui/jquery.ui.less";
+
+// jQuery UI Custom
+@import "jquery-ui-custom.less";
+
+// page-layout (Structure)
+//@import "structure.less";	// 파일명 변경
+@import "page-layout.less";
+
+// Input
+@import "input.less";
+
+// ui layout
+@import "ui-layout.less";
+
+// width/height
+@import "width-height.less";
+
+// Components(plugins)
+/*
+@import "components/jqgrid.less";
+@import "components/jstree.less";
+//@import "components/jqtree.less";
+//@import "components/jquery.selectBoxIt.less";
+@import "components/jquery.metisMenu.less";
+@import "components/bootstrap-datetimepicker.less";
+@import "components/daterangepicker-bs3.less";
+@import "components/bootstrap-select.less";
+@import "components/stepper.less";
+*/

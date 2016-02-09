@@ -4,6 +4,9 @@
 /.settings/
 /build/
 /node_modules/
+/puf-build/
+/puf-dist/puf/scripts/
+/puf-dist/puf/styles/
 /webapps/META-INF/
 /webapps/WEB-INF/
 /webapps/puf/

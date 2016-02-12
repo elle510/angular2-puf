@@ -2,23 +2,50 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
+<!-- 모바일 기기의 가로폭 조정을 위해서 -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <title>UI 개발 가이드</title>
+
+<link rel="stylesheet" href="../puf/libs/styles/bootstrap.min.css" />
+<link rel="stylesheet" href="../puf/libs/styles/jquery-ui.min.css" />
+<link rel="stylesheet" href="../puf/libs/styles/font-awesome.min.css" />
+<!-- <link rel="stylesheet" href="../puf/styles/font-polestar.min.css" /> -->
+<link rel="stylesheet" href="styles/prettify.css" />
+
+<link rel="stylesheet" href="../puf/styles/common.min.css" />
+
+<!-- Theme -->
+<link rel="stylesheet" href="../puf/styles/themes/simple-light-theme.min.css" />
+
 </head>
 <body>
-Angular2 Start
+
+<puf-app>Loading...</puf-app>
+
+<script type="text/javascript" src="../puf/libs/es6-shim.min.js"></script>
+<script type="text/javascript" src="../puf/libs/system-polyfills.js"></script>
+
+<script type="text/javascript" src="../puf/libs/angular2-polyfills.min.js"></script>
+<script type="text/javascript" src="../puf/libs/system.js"></script>
+<script type="text/javascript" src="../puf/libs/Rx.min.js"></script>
+<script type="text/javascript" src="../puf/libs/angular2.min.js"></script>
+
+<script type="text/javascript" src="libs/prettify.js"></script>
 
 <script type="text/javascript">
-	var ANGULAR2_BUNDLE_CONFIG = [
-                              'angular2/common',
-                              'angular2/core',
-                              'angular2/compiler',
-                              'angular2/instrumentation',
-                              'angular2/platform/browser',
-                              'angular2/platform/common_dom'
-                            ];
-
-	var NG2_BUNDLE_CONTENT = ANGULAR2_BUNDLE_CONFIG.join(' + ') + ' - rxjs/*';
-	console.log(NG2_BUNDLE_CONTENT);
+	System.config({
+		packages: {        
+			scripts: {
+            	format: 'register',
+            	defaultExtension: 'js'
+          	}
+   		}
+  	});
+  	System.import('scripts/boot')
+  		  .then(null, console.error.bind(console));
 </script>
+       
 </body>
 </html>

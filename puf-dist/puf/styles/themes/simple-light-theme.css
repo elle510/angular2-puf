@@ -9,7 +9,6 @@
 }
 */
 body {
-  background: #fff;
   font-family: Verdana, Arial, Helvetica, sans-serif;
   color: #333;
   font-size: 14px;
@@ -32,13 +31,11 @@ body {
   float: left;
   height: 100%;
   margin: 0;
-  border: 1px solid;
 }
 .navi .logo {
   float: left;
   width: 200px;
   height: 100%;
-  border: 1px solid;
 }
 .navi .navbar {
   float: left;
@@ -49,12 +46,11 @@ body {
 .user {
   float: right;
   height: 100%;
-  border: 1px solid;
+  border-left: 1px solid;
 }
 .navbar .navbar-nav {
   float: left;
   height: 100%;
-  border: 1px solid;
 }
 .navbar .navbar-right {
   float: right !important;
@@ -78,7 +74,6 @@ body {
 }
 .left-sidebar {
   width: 350px;
-  border: 1px solid;
 }
 .center {
   position: absolute;
@@ -96,7 +91,8 @@ body {
   height: 30px;
 }
 .center > .content {
-  border: 1px solid;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
 }
 /* footer 영역
 ----------------------------------*/

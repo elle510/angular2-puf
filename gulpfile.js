@@ -261,7 +261,7 @@ gulp.task('dist.css', ['clean.css:dist', 'less'], function() {
 //-----------------------
 // Demo
 
-var DEMO_SRC_PATH = './webapps/puf-demo';
+var DEMO_SRC_PATH = './webapps/puf-demo/ts';
 var DEMO_BUILD_PATH = './webapps/puf-demo/scripts';
 
 gulp.task('clean.demo', function() {

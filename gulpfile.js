@@ -337,4 +337,4 @@ gulp.task('build.js', ['compile', 'bundle', 'dist.js', 'webapps.js:copy']);				/
 gulp.task('build.css', ['less', 'dist.css', 'webapps.css:copy']);						// puf css
 gulp.task('build', ['build.js', 'build.css', 'webapps:copy']);							// puf js/css
 //gulp.task('build.app', ['build.demo', 'build.tutorial']);								// puf-demo/tutorial
-gulp.task('default', ['build.js', 'build.css', 'build.demo', 'build.tutorial']);		// puf/puf-demo/tutorial
+gulp.task('default', ['build', 'build.demo', 'build.tutorial']);						// puf/puf-demo/tutorial
